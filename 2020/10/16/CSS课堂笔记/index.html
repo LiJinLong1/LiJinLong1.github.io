@@ -28,10 +28,10 @@
 <meta property="og:description" content="CSS学习笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-10-16T08:38:31.000Z">
-<meta property="article:modified_time" content="2020-10-18T11:32:49.818Z">
+<meta property="article:modified_time" content="2020-10-19T09:52:46.990Z">
 <meta property="article:author" content="LI Jinlong">
-<meta property="article:tag" content="CSS">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="CSS">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2020/10/16/CSS%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/">
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-10-18 19:32:49" itemprop="dateModified" datetime="2020-10-18T19:32:49+08:00">2020-10-18</time>
+                <time title="修改时间：2020-10-19 17:52:46" itemprop="dateModified" datetime="2020-10-19T17:52:46+08:00">2020-10-19</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,11 +245,70 @@
       
         <h1 id="CSS学习笔记"><a href="#CSS学习笔记" class="headerlink" title="CSS学习笔记"></a>CSS学习笔记</h1><a id="more"></a>
 
-<h2 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h2><h3 id="1-什么是CSS，有什么作用"><a href="#1-什么是CSS，有什么作用" class="headerlink" title="1.什么是CSS，有什么作用"></a>1.什么是CSS，有什么作用</h3><p>​    CSS是(Cascading Style Sheet)：层叠样式语言</p>
-<p>​    CSS的作用是：</p>
-<p>​            修饰HTML页面，设置HTML页面中的某些元素的样式，让HTML更好看。</p>
-<p>​            HTML还是主体，CSS依赖HTML</p>
-<p>​    </p>
+<h1 id="一-CSS简介"><a href="#一-CSS简介" class="headerlink" title="一 CSS简介"></a>一 CSS简介</h1><p>​       CSS(cascading style sheet，层叠样式表)是描述文档怎么样被呈现的语言，使用CSS可以对HTML文档进行描述。 </p>
+<p>​       语法： ①CSS属性和值之间用冒号分隔<br>​                    ②CSS属性之间用分号分隔（建议每个属性后都书写分号）<br>​                    ③CSS的值有多个的时候使用空格分隔<br>​       </p>
+<h1 id="二-CSS在网页中的使用"><a href="#二-CSS在网页中的使用" class="headerlink" title="二 CSS在网页中的使用"></a>二 CSS在网页中的使用</h1><h3 id="1-内嵌式"><a href="#1-内嵌式" class="headerlink" title="1 内嵌式"></a><strong>1 内嵌式</strong></h3><p>​         每个HTML元素都包含有一个style属性，使用该属性可以直接指定样式。如<p style=""></p> </p>
+<p>​         存在问题：①.不方便修改  ②结构与显示不能很好的分离   ③建议在测试或个别情况下使用</p>
+<h3 id="2-嵌入式"><a href="#2-嵌入式" class="headerlink" title="2 嵌入式"></a>2 嵌入式</h3><p>​         CSS样式定义内容位于style元素之间，其type属性必须被定义为text/css<br>​         <head><br>​           <style type="text/css">  css样式  </style> </p>
+<p>​         </head></p>
+<h3 id="3-外部引用时"><a href="#3-外部引用时" class="headerlink" title="3 外部引用时"></a>3 外部引用时</h3><p>​         可以在多个文档间共享样式表，提高效率；可以改变样式表而无须改变HTML文档。<br>​         <head><br>​           <link rel="stylesheet" href="url" type="text/css"><br>​           或者<br>​           <style type="text/css"><br>​             @import “style.css”;<br>​             @import url(“style.css”);<br>​           </style><br>​         </head><br>​         推荐使用第一种方式 </p>
+<h1 id="三-CSS基本语法规则"><a href="#三-CSS基本语法规则" class="headerlink" title="三  CSS基本语法规则"></a>三  CSS基本语法规则</h1><h2 id="1-选择器"><a href="#1-选择器" class="headerlink" title="1 选择器"></a>1 选择器</h2><p>​       用于选择html中的元素 </p>
+<h3 id="html标签选择器"><a href="#html标签选择器" class="headerlink" title="html标签选择器"></a>html标签选择器</h3><p>​         即html标签，任何一个HTML元素的标签名都可以是css的选择器。如p{   text-indent:10px} /<em>段落第一行缩进10像素</em>/   ；h1{ color:red}<br>​         优先级： ①默认情况下，子级通常先继承父级标签属性<br>​                 ②如果子级和父级拥有相同的属性，子级优先，就近原则 </p>
+<p>​                 ③类选择器的优先级高于标签选择器</p>
+<h3 id="类选择器"><a href="#类选择器" class="headerlink" title="类选择器"></a>类选择器</h3><p>​         class属性<br>​          .类名(类名不能使用数字开头，不能使用关键字来命名)  如：.rr{ color :red} </p>
+<p>​          使用class属性来调用类名称<br>​              <p class="rr">one</p><br>​              <p class="rr">two</p><br>​              <p class="rr">three</p> </p>
+<h3 id="ID选择器"><a href="#ID选择器" class="headerlink" title="ID选择器"></a>ID选择器</h3><p>​         id属性（ #id名）<br>​          #two{background-color:green}<br>​         <p class="rr">one</p><br>​         <p id="two" class="rr">two</p><br>​         <p class="rr">three</p> </p>
+<h3 id="关联选择器"><a href="#关联选择器" class="headerlink" title="关联选择器"></a>关联选择器</h3><p>​         它们的优先级比单一的选择器大。<br>​         <strong>后代选择器</strong> 选择a元素里面所有后代元素中的b元素。如： a b{…}<br>​         <strong><em>\</em>子代选择器**</strong> 选择a元素里面第一代子元素中的b元素。如： a&gt;b{…} </p>
+<h3 id="组合选择器"><a href="#组合选择器" class="headerlink" title="组合选择器"></a>组合选择器</h3><p>​         使用逗号,隔开选择器，可以减少样式表的重复声明。如： h1,h2,h3,h4{color:red} </p>
+<h3 id="伪元素选择器"><a href="#伪元素选择器" class="headerlink" title="伪元素选择器"></a>伪元素选择器</h3><p>​         是指对同一个HTML元素的不同状态的一种定义方式<br>​         HTML标签:伪元素{}<br>​         a:link{}   超链接没有任何动作前的状态<br>​         a:hover{}   光标移动到超链接上的状态<br>​         a:active{}   点击超链接时的状态<br>​         a:visited{} 访问过超链接的状态<br>​         text-decoration:none 去掉下划线 </p>
+<h2 id="2-选择器优先级"><a href="#2-选择器优先级" class="headerlink" title="2 选择器优先级"></a>2 选择器优先级</h2><p>​       多个CSS选择器同时作用于同一个html时，声明不同的属性具有继承的关系，如果声明的是相同的属性，则以优先级高的为主。 </p>
+<p>​        <strong><em>\</em>内嵌式  &gt; 关联选择器(后代，子代，组合(且))    &gt; ID选择器    &gt; 类选择器   &gt; HTML选择器**</strong> </p>
+<p>​       同级别的后者覆盖前者 <strong>，</strong> <strong><em>\</em>就近原则**</strong> </p>
+<h2 id="3-样式"><a href="#3-样式" class="headerlink" title="3 样式"></a>3 样式</h2><p>​       样式是零个或多个以分号分割的【属性名：属性值】列表</p>
+<h2 id="4-规则集"><a href="#4-规则集" class="headerlink" title="4 规则集"></a>4 规则集</h2><p>​       选择器 样式 </p>
+<p>​       选择器{属性名:属性值;属性名:属性值}</p>
+<h2 id="5-注释"><a href="#5-注释" class="headerlink" title="5 注释"></a>5 注释</h2><p>​       /*   注释内容 */</p>
+<h1 id="四-CSS常见的样式属性和值"><a href="#四-CSS常见的样式属性和值" class="headerlink" title="四  CSS常见的样式属性和值"></a>四  CSS常见的样式属性和值</h1><h4 id="1-CSS-尺寸属性"><a href="#1-CSS-尺寸属性" class="headerlink" title="1 CSS 尺寸属性"></a>1 CSS 尺寸属性</h4><p>​       (注意块级元素和行内元素的区别)<br>​       height   设置元素高度。<br>​       width   设置元素的宽度。 </p>
+<p><strong>2  字体属性</strong><br>     font-family字体族科<br>         宋体 SimSun<br>         黑体 SimHei<br>         微软雅黑 Microsoft YaHei<br>         微软正黑体 Microsoft JhengHei<br>         新宋体 NSimSun<br>         新细明体 PMingLiU<br>         细明体 MingLiU<br>         标楷体 DFKai-SB<br>         仿宋 FangSong<br>         仿宋_GB2312 FangSong_GB2312<br>         楷体_GB2312 KaiTi_GB2312<br>      font-size   字体大小<br>       font-style   字体风格（normal   正常;italic 斜体;oblique 倾斜）<br>       font-weight字体加粗（ normal 正常;bold 粗体;bolder 更粗;lighter 更细）<br>       text-decoration 规定添加到文本的修饰 ：<br>          none      默认。定义标准的文本。<br>          underline    定义文本下的一条线。<br>          overline    定义文本上的一条线。<br>          line-through定义穿过文本下的一条线。<br>          blink      定义闪烁的文本。 </p>
+<p><strong>3  颜色</strong><br>       color   设定文本的颜色 </p>
+<p>​       opacity   设置透明度（ 所有浏览器都支持 opacity 属性）</p>
+<p>​       注：IE8 以及更早的版本支持替代的 filter 属性。例如：filter:Alpha(opacity=50)。  一般两个属性一起写，保证兼容性。 filter:Alpha(opacity=50);  opacity:0.5;</p>
+<p><strong>4  背景</strong></p>
+<p>​       background-color:#CCC；设置元素的背景颜色。 </p>
+<p>​       background-image ： 设置元素的背景图像。属性值url(“1.png”);</p>
+<p>​       background-repeat ： 设置是否及如何重复背景图像。<br>​         repeat    默认。背景图像将在垂直方向和水平方向重复。<br>​         repeat-x    背景图像将在水平方向重复。<br>​         repeat-y    背景图像将在垂直方向重复。<br>​         no-repeat    背景图像将仅显示一次。<br>​         inherit    规定应该从父元素继承 background-repeat 属性的设置。   </p>
+<p>​       background-attachment：设置背景图像是否固定或者随着页面的其余部分滚动。（属性值：①fixed   固定  ②scroll   滚动）</p>
+<p>​       background-position：设置背景图像的开始位置。这个属性设置背景原图像（由 background-image 定义）的位置，背景图像如果要重复，将从这一点开始。您需要把 background-attachment属性设置为 “fixed”，才能保证该属性在 Firefox 和 Opera 中正常工作。<br>​          横向关键字： left center right<br>​          纵向关键字： top center bottom<br>​         百分比：左上角是 0% 0%。右下角是 100% 100%。</p>
+<p>​       background ： 简写属性在一个声明中设置所有的背景属性。如：background:#ff0000 url(‘smiley.gif’) no-repeat; </p>
+<p><strong>5  边框属性</strong><br>       border-style 设置4个边框的样式<br>         dotted    定义点状边框。在大多数浏览器中呈现为实线。<br>         solid    定义实线。<br>         double    定义双线。<br>         dashed 定义虚线。<br>         none    定义无边框<br>         …<br>         如果4个值都给定了，分别应用于上，右，下,左。如：border-style: solid dashed dashed solid;<br>         如果给定1个值，应用于各边; 如：border-style: solid;<br>         如果给定2个值，第一个值应用于上下边，第二个值应用于左右边。如： border-style: solid dashed; </p>
+<p>​       border-width 设置4个边框的宽度<br>​       border-color 设置边框颜色<br>​       border 在一个声明设置所有的边框属性。如：order:1px solid #ff0000 </p>
+<p><strong>6 鼠标光标属性</strong><br>       cursor   属性规定要显示的光标的类型（形状）。<br>         none   无<br>         auto    默认。浏览器设置的光标。<br>         pointer 光标呈现为指示链接的指针（一只手）<br>         wait    此光标指示程序正忙（通常是一只表或沙漏）。 </p>
+<p>​         help    此光标指示可用的帮助（通常是一个问号或一个气球）。</p>
+<p> <strong>7  列表属性</strong></p>
+<p>​       list-style-image    将图象设置为列表项标记。 如：list-style-image:url(“/i/arrow.gif”);<br>​       list-style-position 设置列表项标记的放置位置。<br>​         inside    列表项目标记放置在文本以内，且环绕文本根据标记对齐。<br>​         outside 默认值。保持标记位于文本的左侧。列表项目标记放置在文本以外，且环绕文本不根据标记对齐。<br>​         在Firefox中的查看器中选中ul即可看出区别 </p>
+<p>​       list-style-type    设置列表项标记的类型。<br>​         none    无标记。<br>​         disc    默认。标记是实心圆。<br>​         circle    标记是空心圆。<br>​         square    标记是实心方块。<br>​         decimal 标记是数字。<br>​         ower-roman   小写罗马数字(i, ii, iii, iv, v, 等。)<br>​         upper-roman   大写罗马数字(I, II, III, IV, V, 等。)<br>​         lower-alpha   小写英文字母The marker is lower-alpha (a, b, c, d, e, 等。)<br>​         upper-alpha   大写英文字母The marker is upper-alpha (A, B, C, D, E, 等。)<br>​         lower-latin   小写拉丁字母(a, b, c, d, e, 等。)<br>​         upper-latin   大写拉丁字母(A, B, C, D, E, 等。) </p>
+<p>​       list-style      在一个声明中设置所有的列表属性。如：list-style: square inside url(‘/i/eg_arrow.gif’) </p>
+<p> <strong>8  表格</strong><br>       优先级： td,th–&gt;tr–&gt;tbody,thead,tfoot–&gt;table (从里向外的规则)<br>       color,font-size<br>       text-align   文字对齐<br>       background<br>       border  边框，只能用于table,th,td<br>       margin  间距，只能用于table,caption<br>       padding 内间距，只能用于th,td<br>       width   宽，只能用于table,td,th<br>       height   高，只能用于table,td,th、可以用于tr并且优先级高于td<br>       caption-side 标题位置：top/left/right/botton </p>
+<h1 id="五-盒子模型"><a href="#五-盒子模型" class="headerlink" title="五 盒子模型"></a>五 盒子模型</h1><p>​     网页就是由许多个盒子通过不同的排列方式堆积而成，网页上每个元素都被浏览器看成是一个矩形的盒子，这个盒子由元素的内容，填充，边框，边界组成。默认盒子边框无，背景色透明，默认看不到盒子 </p>
+<h3 id="1-盒子模型"><a href="#1-盒子模型" class="headerlink" title="1  盒子模型"></a>1  盒子模型</h3><p>​       margin 外边距，定义区块外边界与上级元素距离的属性，值为长度<br>​       padding 内边距（填充），是设置区块的内边距的属性，是边框和元素内容之间的间隔距离<br>​       border 边框(注意边框是有内外俩条边界的)<br>​       width  盒子的宽度<br>​       height 盒子的高度<br>​       内容   盒子里面所包含的元素和内容 </p>
+<p>​       属性值：<br>​         1个：上下左右都是该值<br>​         2个：前者表示上下的值，后者表示左右的值<br>​         3个：前者表示上边的值，中间表示左右的值，后者表示下边的值 </p>
+<p>​         4个：上右下左，顺时针排序</p>
+<h3 id="2-不同浏览器解析盒子模型的差异"><a href="#2-不同浏览器解析盒子模型的差异" class="headerlink" title="2  不同浏览器解析盒子模型的差异"></a>2  不同浏览器解析盒子模型的差异</h3><p>​       IE5盒子 width = 内容 + border + padding<br>​         盒子占据的宽度 = margin<em>2+width<br>​         盒子占据的高度 = margin</em>2+height<br>​         盒子实际的宽度 = width<br>​         盒子实际的高度 = height </p>
+<p>​       W3C盒子 width = 内容<br>​         盒子占据的宽度 = margin<em>2+border</em>2+padding<em>2+width<br>​         盒子占据的高度 = margin</em>2+border<em>2+padding</em>2+height<br>​         盒子实际的宽度 = border<em>2+padding</em>2+width<br>​         盒子实际的高度 = border<em>2+padding</em>2+height </p>
+<h3 id="3-设置浏览器去遵循w3c标准"><a href="#3-设置浏览器去遵循w3c标准" class="headerlink" title="3  设置浏览器去遵循w3c标准"></a>3  设置浏览器去遵循w3c标准</h3><p>​       只需要在网页的顶部加上DOCTYPE声明即可<br>​       另外注意 !important 的使用<br>​       p{<br>​         color:red !important;<br>​         color:blue;<br>​       }<br>​       当不加!important;的时候，后者覆盖前者，当加上之后说明第一个,样式优先级更高，采用前者，但是Ie6不支持!important; </p>
+<h3 id="4-其他属性"><a href="#4-其他属性" class="headerlink" title="4 其他属性"></a>4 其他属性</h3><p>​       border-width   边框高度<br>​       border-color   边框颜色<br>​       border-style   边框样式<br>​         none   无样式<br>​         dotted   点线<br>​         dashed   虚线<br>​         solid   实线<br>​         double   双线<br>​         groove   槽线<br>​         ridge   脊线<br>​         inset   内凹<br>​         outset   外凸 </p>
+<h3 id="5-关于填充和边框的常见问题"><a href="#5-关于填充和边框的常见问题" class="headerlink" title="5 关于填充和边框的常见问题"></a>5 关于填充和边框的常见问题</h3><p>​     \1. 大部分的html元素的盒子属性（margin,padding）默认值为0，有少数html元素的（marigin，padding不为0）例如：body,p,ul,li,form等标签，有时需要将其先设置为0<br>​     \2. 相邻两个兄弟元素的外边框会发生合并，一般浏览器会自动设定他们的外边距(注意我们可以margin设置为负值)<br>​     \3. 如果没有设置父级元素的内边距或边框，那么它的子元素的边界会和其合并。(注意边框是有内外俩条边界的)<br>​     \4. 设置一个块元素居中： marigin:0 auto;  （ 第一个表示top和bottom，第二个表示left和right）<br>​     \5. margin可以设置负值，padding不可以设置<br>​     \6. 行内元素的margin值，只有左右值，没有上下值 </p>
+<h3 id="6-行内元素与块级元素"><a href="#6-行内元素与块级元素" class="headerlink" title="6 行内元素与块级元素"></a>6 行内元素与块级元素</h3><p>   <strong><em>\</em>行内元素**</strong><br>       行内元素不可以设置宽（width）和高（height【但是可以通过line-height设置】），但可以与其他行内元素位于同一行，行内元素内一般不可以包含块级元素。行内元素的高度一般由元素内部的字体大小决定，宽度由内容的长度控制。常见的行内元素有:em,font,b,span,a,strong </p>
+<p>   <strong>块级元素</strong><br>       块级元素排斥其他元素与其位于同一行，可以设定元素的宽（width）和高（height），块级元素一般是其他元素的容器，可容纳块级元素和行内元素。常见的块级元素有div, p ,h1~h6等 </p>
+<p>​         IE6/7及IE8混杂模式中(当IE浏览器识别不了DTD就会显示成混杂模式)，text- align:center可以使块级元素也居中对齐。其他浏览器中，text-align:center仅作用于行内内容上。 </p>
+<p>​       改变元素类型：<br>​         display<br>​           可以将一个行级元素转换为块级元素，但是这种转换并不能改变元素本质，转换的只是CSS的盒子的外观<br>​           需要转换盒子类型的情况：<br>​           水平的列表菜单，不断行的标题，隐藏元素<br>​           none    隐藏元素。不会被显示，不占空间<br>​           block   块级元素。独占一行空间<br>​           inline 默认。此元素会被显示为内联元素，元素前后没有换行符。<br>​           inline-block   兼有块级和行级元素特性，在行内显示但是可以设定宽高 </p>
+<p>​           list-item      此元素会作为列表显示。 </p>
+<p>​           table    此元素会作为块级表格来显示（类似 <table>），表格前后带有换行符。<br>​           inline-table    此元素会作为内联表格来显示（类似 <table>），表格前后没有换行符。<br>​           table-row-group    此元素会作为一个或多个行的分组来显示（类似 <tbody>）。<br>​           table-header-group    此元素会作为一个或多个行的分组来显示（类似 <thead>）。<br>​           table-footer-group    此元素会作为一个或多个行的分组来显示（类似 <tfoot>）。<br>​           table-row      此元素会作为一个表格行显示（类似 <tr>）。<br>​           table-column    此元素会作为一个单元格列显示（类似 <col>）<br>​           table-cell      此元素会作为一个表格单元格显示（类似 <td> 和 <th>）<br>​           table-caption    此元素会作为一个表格标题显示（类似 <caption>）<br>​           inherit      规定应该从父元素继承 display 属性的值。<br>​         float,position<br>​           应用了浮动和绝对定位的元素，变成了块级元素，因此display属性一般被忽略<br>​         如果元素应用了display:none，该元素（以及子元素）被隐藏起来，对其再使用float,position将不再有意义 </p>
+<h1 id="六-浮动-float"><a href="#六-浮动-float" class="headerlink" title="六  浮动 float"></a>六  浮动 float</h1><p>​     任何元素都可以浮动，可以改变普通文档流的排列方式，可以使得块元素在同一行中排列，使我们的布局更加方便，浮动是脱离文档流的，也就是其他元素看不见这个浮动的元素。浏览器将窗体自上而下分成一行一行,并在每行中按从左至右的挨次排放元素,即为文档流。 </p>
+<p>​     浮动何时停止？<br>​       \1. 当遇到一个浮动元素后<br>​       \2. 当遇到父级元素后<br>​     多个盒子都浮动后，就产生了块级元素水平排列的效果。 多个浮动元素不会相互覆盖。 若包含的容器太窄，无法容纳水平排列的多个浮动元素，那么最后的浮动盒子会向下移动，但如果浮动元素的高度不同，那么它们向下移动时可能会被卡住。 </p>
+<p>​     float:<br>​       left    元素向左浮动。<br>​       right    元素向右浮动。<br>​       none    默认值。元素不浮动，并会显示在其在文本中出现的位置。 </p>
+<h1 id="七-定位-position"><a href="#七-定位-position" class="headerlink" title="七 定位 position"></a>七 定位 position</h1><p>​     定位属性：<br>​       <strong>相对定位 relative:</strong> 参照元素原来的位置进行移动，元素原来的空间位不变，元素在移动时会覆盖其他元素。<br>​       <strong><em>\</em>固定定位 fixed\</strong>:** 将元素固定在窗口中的某个位置，绝对定位是相对于元素的，固定定位是相对于窗口的，会随着窗口的一定而移动。在低版本IE中不支持该属性<br>​       <strong><em>\</em>绝对定位 absolute:**</strong>元素完全脱离文档流，页面中的其他元素视它不存在，绝对定位元素不会影响到其他元素。绝对定位是参照距离他最近的父级有定位属性的元素，如果父级元素没有定位属性，则会参照文档<br>​       <strong>默认定位 static：</strong>默认属性，指定了元素按照常规的文档流进行定位，静态定位元素不允许使用top,left和类似其他属性定位。position的值为static为非定位元素，为其他值时候为定位元素，因为static元素不能自定义元素的位置，而其他可以 </p>
+<p>​     top: 层距离页面顶点纵坐标的距离<br>​     left: 层距离页面定点横坐标的距离<br>​     text-align:   横向排列 left right center<br>​     line-height:行高，内容都在行的中间，可以使用这个属性设置内容垂直居中<br>​     z-index ： 第三个维度 ，值高的元素会覆盖值低的元素。该属性可以使得元素脱离文档流，可能会覆盖其他元素。</p>
 
     </div>
 
@@ -259,8 +318,8 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/CSS/" rel="tag"># CSS</a>
               <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/CSS/" rel="tag"># CSS</a>
           </div>
 
         
@@ -331,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">CSS学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E3%80%81"><span class="nav-number">1.1.</span> <span class="nav-text">一、</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%BB%80%E4%B9%88%E6%98%AFCSS%EF%BC%8C%E6%9C%89%E4%BB%80%E4%B9%88%E4%BD%9C%E7%94%A8"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.什么是CSS，有什么作用</span></a></li></ol></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text">CSS学习笔记</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80-CSS%E7%AE%80%E4%BB%8B"><span class="nav-number">2.</span> <span class="nav-text">一 CSS简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%8C-CSS%E5%9C%A8%E7%BD%91%E9%A1%B5%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">3.</span> <span class="nav-text">二 CSS在网页中的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%86%85%E5%B5%8C%E5%BC%8F"><span class="nav-number">3.0.1.</span> <span class="nav-text">1 内嵌式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="nav-number">3.0.2.</span> <span class="nav-text">2 嵌入式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%A4%96%E9%83%A8%E5%BC%95%E7%94%A8%E6%97%B6"><span class="nav-number">3.0.3.</span> <span class="nav-text">3 外部引用时</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%89-CSS%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%E8%A7%84%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">三  CSS基本语法规则</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.</span> <span class="nav-text">1 选择器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#html%E6%A0%87%E7%AD%BE%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.1.</span> <span class="nav-text">html标签选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B1%BB%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.2.</span> <span class="nav-text">类选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ID%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.3.</span> <span class="nav-text">ID选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B3%E8%81%94%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.4.</span> <span class="nav-text">关联选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%84%E5%90%88%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.5.</span> <span class="nav-text">组合选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%AA%E5%85%83%E7%B4%A0%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">4.1.6.</span> <span class="nav-text">伪元素选择器</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E9%80%89%E6%8B%A9%E5%99%A8%E4%BC%98%E5%85%88%E7%BA%A7"><span class="nav-number">4.2.</span> <span class="nav-text">2 选择器优先级</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E6%A0%B7%E5%BC%8F"><span class="nav-number">4.3.</span> <span class="nav-text">3 样式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E8%A7%84%E5%88%99%E9%9B%86"><span class="nav-number">4.4.</span> <span class="nav-text">4 规则集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E6%B3%A8%E9%87%8A"><span class="nav-number">4.5.</span> <span class="nav-text">5 注释</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%9B-CSS%E5%B8%B8%E8%A7%81%E7%9A%84%E6%A0%B7%E5%BC%8F%E5%B1%9E%E6%80%A7%E5%92%8C%E5%80%BC"><span class="nav-number">5.</span> <span class="nav-text">四  CSS常见的样式属性和值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CSS-%E5%B0%BA%E5%AF%B8%E5%B1%9E%E6%80%A7"><span class="nav-number">5.0.0.1.</span> <span class="nav-text">1 CSS 尺寸属性</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%94-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">五 盒子模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.0.1.</span> <span class="nav-text">1  盒子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%8D%E5%90%8C%E6%B5%8F%E8%A7%88%E5%99%A8%E8%A7%A3%E6%9E%90%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B%E7%9A%84%E5%B7%AE%E5%BC%82"><span class="nav-number">6.0.2.</span> <span class="nav-text">2  不同浏览器解析盒子模型的差异</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%AE%BE%E7%BD%AE%E6%B5%8F%E8%A7%88%E5%99%A8%E5%8E%BB%E9%81%B5%E5%BE%AAw3c%E6%A0%87%E5%87%86"><span class="nav-number">6.0.3.</span> <span class="nav-text">3  设置浏览器去遵循w3c标准</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E5%85%B6%E4%BB%96%E5%B1%9E%E6%80%A7"><span class="nav-number">6.0.4.</span> <span class="nav-text">4 其他属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-%E5%85%B3%E4%BA%8E%E5%A1%AB%E5%85%85%E5%92%8C%E8%BE%B9%E6%A1%86%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">6.0.5.</span> <span class="nav-text">5 关于填充和边框的常见问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E8%A1%8C%E5%86%85%E5%85%83%E7%B4%A0%E4%B8%8E%E5%9D%97%E7%BA%A7%E5%85%83%E7%B4%A0"><span class="nav-number">6.0.6.</span> <span class="nav-text">6 行内元素与块级元素</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%85%AD-%E6%B5%AE%E5%8A%A8-float"><span class="nav-number">7.</span> <span class="nav-text">六  浮动 float</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%83-%E5%AE%9A%E4%BD%8D-position"><span class="nav-number">8.</span> <span class="nav-text">七 定位 position</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
