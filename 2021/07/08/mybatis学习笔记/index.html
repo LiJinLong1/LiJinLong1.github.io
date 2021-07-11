@@ -28,10 +28,11 @@
 <meta property="og:description" content="mybatis">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-07-08T01:10:08.000Z">
-<meta property="article:modified_time" content="2021-07-11T07:27:32.898Z">
+<meta property="article:modified_time" content="2021-07-11T12:46:58.193Z">
 <meta property="article:author" content="LI Jinlong">
 <meta property="article:tag" content="SSM">
 <meta property="article:tag" content="mybatis">
+<meta property="article:tag" content="框架">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://example.com/2021/07/08/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
@@ -221,7 +222,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2021-07-11 15:27:32" itemprop="dateModified" datetime="2021-07-11T15:27:32+08:00">2021-07-11</time>
+                <time title="修改时间：2021-07-11 20:46:58" itemprop="dateModified" datetime="2021-07-11T20:46:58+08:00">2021-07-11</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -357,9 +358,7 @@
 <h2 id="第五章：MyBatis-配置文件"><a href="#第五章：MyBatis-配置文件" class="headerlink" title="第五章：MyBatis 配置文件"></a>第五章：MyBatis 配置文件</h2><ol>
 <li><h3 id="数据库的属性配置文件："><a href="#数据库的属性配置文件：" class="headerlink" title="数据库的属性配置文件："></a>数据库的属性配置文件：</h3></li>
 </ol>
-<p>​     把数据库连接信息放到一个单独的文件中。 和mybatis主配置文件分开。<br>​    目的是便于修改，保存，处理多个数据库的信息。<br>​<br>      1）在resources目录中定义一个属性配置文件， xxxx.properties ,例如 jdbc.properties<br>       在属性配置文件中， 定义数据，格式是 key=value<br>          key： 一般使用 . 做多级目录的。<br>          例如 jdbc.mysql.driver    , jdbc.driver, mydriver<br>          jdbc.driver=com.mysql.jdbc.Driver<br>          jdbc.url=jdbc:mysql//…..<br>          jdbc.username=root<br>          jdbc.password=123456</p>
-<pre><code>  2）在mybatis的主配置文件使用&lt;property&gt; 指定文件的位置
-     在需要使用值的地方， $&#123;key&#125;</code></pre>
+<p>​     把数据库连接信息放到一个单独的文件中。 和mybatis主配置文件分开。<br>​    目的是便于修改，保存，处理多个数据库的信息。<br>​<br>​      1）在resources目录中定义一个属性配置文件， xxxx.properties ,例如 jdbc.properties<br>​       在属性配置文件中， 定义数据，格式是 key=value<br>​          key： 一般使用 . 做多级目录的。<br>​          例如 jdbc.mysql.driver    , jdbc.driver, mydriver<br>​          jdbc.driver=com.mysql.jdbc.Driver<br>​          jdbc.url=jdbc:mysql//…..<br>​          jdbc.username=root<br>​          jdbc.password=123456<br>​<br>      2）在mybatis的主配置文件使用<property> 指定文件的位置<br>         在需要使用值的地方， ${key}</p>
 <h3 id="2-mapper文件，使用package指定路径"><a href="#2-mapper文件，使用package指定路径" class="headerlink" title="2.mapper文件，使用package指定路径"></a>2.mapper文件，使用package指定路径</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!--第二种方式： 使用包名</span></span><br><span class="line"><span class="comment">        name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis</span></span><br><span class="line"><span class="comment">        使用package的要求：</span></span><br><span class="line"><span class="comment">         1. mapper文件名称需要和接口名称一样， 区分大小写的一样</span></span><br><span class="line"><span class="comment">         2. mapper文件和dao接口需要在同一目录</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.bjpowernode.dao&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="第六章：PageHelper"><a href="#第六章：PageHelper" class="headerlink" title="第六章：PageHelper"></a>第六章：PageHelper</h2><p> 6.1.1 Mybatis 通用分页插件</p>
@@ -415,6 +414,7 @@
           <div class="post-tags">
               <a href="/tags/SSM/" rel="tag"># SSM</a>
               <a href="/tags/mybatis/" rel="tag"># mybatis</a>
+              <a href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag"># 框架</a>
           </div>
 
         
