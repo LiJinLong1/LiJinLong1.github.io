@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="mybatis">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mybatis学习笔记">
+<meta property="og:url" content="http://example.com/2021/07/08/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="mybatis">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-07-08T01:10:08.000Z">
+<meta property="article:modified_time" content="2021-07-11T07:24:22.426Z">
+<meta property="article:author" content="LI Jinlong">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2021/07/08/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>mybatis学习笔记 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+<a target="_blank" rel="noopener" href="https://your-url" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#70B7FD; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Hexo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/07/08/mybatis%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://gitee.com/li-jin-long/blog/raw/master/img/20201018192746.jpg">
+      <meta itemprop="name" content="LI Jinlong">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          mybatis学习笔记
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-07-08 09:10:08" itemprop="dateCreated datePublished" datetime="2021-07-08T09:10:08+08:00">2021-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-07-11 15:24:22" itemprop="dateModified" datetime="2021-07-11T15:24:22+08:00">2021-07-11</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="mybatis"><a href="#mybatis" class="headerlink" title="mybatis"></a>mybatis</h1><a id="more"></a>
+
+<h2 id="第一章框架概述"><a href="#第一章框架概述" class="headerlink" title="第一章框架概述"></a>第一章框架概述</h2><h3 id="1-三层架构"><a href="#1-三层架构" class="headerlink" title="1.三层架构"></a>1.三层架构</h3><p>界面层： 和用户打交道的， 接收用户的请求参数， 显示处理结果的。（jsp ，html ，servlet）<br>业务逻辑层： 接收了界面层传递的数据，计算逻辑，调用数据库，获取数据<br>数据访问层： 就是访问数据库， 执行对数据的查询，修改，删除等等的。</p>
+<pre><code> 三层对应的包
+   界面层： controller包 （servlet）
+   业务逻辑层： service 包（XXXService类）
+   数据访问层： dao包（XXXDao类）
+
+
+ 三层中类的交互
+   用户使用界面层--&gt; 业务逻辑层---&gt;数据访问层（持久层）--&gt;数据库（mysql）</code></pre>
+<p>​<br>​     三层对应的处理框架<br>​       界面层—servlet—springmvc（框架）<br>​       业务逻辑层—service类–spring（框架）<br>​       数据访问层—dao类–mybatis（框架）</p>
+<h3 id="2-框架"><a href="#2-框架" class="headerlink" title="2.框架"></a>2.框架</h3><p>   框架是一个舞台， 一个模版</p>
+<p>   模版：<br>     1. 规定了好一些条款，内容。<br>     2. 加入自己的东西</p>
+<p>   框架是一个模块<br>    1.框架中定义好了一些功能。这些功能是可用的。<br>    2.可以加入项目中自己的功能， 这些功能可以利用框架中写好的功能。</p>
+<p>   框架是一个软件，半成品的软件，定义好了一些基础功能， 需要加入你的功能就是完整的。<br>   基础功能是可重复使用的，可升级的。</p>
+<p>   框架特点：<br>    1. 框架一般不是全能的， 不能做所有事情<br>    2. 框架是针对某一个领域有效。 特长在某一个方面，比如mybatis做数据库操作强，但是他不能做其它的。<br>    3. 框架是一个软件</p>
+<p> mybatis框架<br>   一个框架，早期叫做ibatis,  代码在github。<br>   mybatis是 MyBatis SQL Mapper Framework for Java （sql映射框架）<br>   1）sql mapper :sql映射<br>         可以把数据库表中的一行数据  映射为 一个java对象。<br>     一行数据可以看做是一个java对象。操作这个对象，就相当于操作表中的数据</p>
+<p>   2） Data Access Objects（DAOs） : 数据访问 ， 对数据库执行增删改查。</p>
+<p> mybatis提供了哪些功能：</p>
+<ol>
+<li><p>提供了创建Connection ,Statement, ResultSet的能力 ，不用开发人员创建这些对象了</p>
+</li>
+<li><p>提供了执行sql语句的能力， 不用你执行sql</p>
+</li>
+<li><p>提供了循环sql， 把sql的结果转为java对象， List集合的能力<br> while (rs.next()) {<br>   Student stu = new Student();<br>   stu.setId(rs.getInt(“id”));<br>   stu.setName(rs.getString(“name”));<br>   stu.setAge(rs.getInt(“age”));<br>   //从数据库取出数据转为 Student 对象，封装到 List 集合<br>   stuList.add(stu);<br> }</p>
+<p>4.提供了关闭资源的能力，不用你关闭Connection, Statement, ResultSet</p>
+</li>
+</ol>
+<p> 开发人员做的是： 提供sql语句<br> 最后是： 开发人员提供sql语句–mybatis处理sql—开发人员得到List集合或java对象（表中的数据）</p>
+<p> 总结：<br>  mybatis是一个sql映射框架，提供的数据库的操作能力。增强的JDBC,<br>  使用mybatis让开发人员集中精神写sql就可以了，不必关心Connection,Statement,ResultSet<br>  的创建，销毁，sql的执行。 </p>
+<h2 id="第二章：mybatis框架入门"><a href="#第二章：mybatis框架入门" class="headerlink" title="第二章：mybatis框架入门"></a>第二章：mybatis框架入门</h2><h3 id="1-主要类的介绍"><a href="#1-主要类的介绍" class="headerlink" title="1 主要类的介绍"></a>1 主要类的介绍</h3><p>   1） Resources： mybatis中的一个类， 负责读取主配置文件<br>      InputStream in = Resources.getResourceAsStream(“mybatis.xml”);</p>
+<pre><code>2)SqlSessionFactoryBuilder : 创建SqlSessionFactory对象， 
+     SqlSessionFactoryBuilder builder  = new SqlSessionFactoryBuilder();
+    //创建SqlSessionFactory对象
+    SqlSessionFactory factory = builder.build(in);</code></pre>
+<p>  3）SqlSessionFactory ： 重量级对象， 程序创建一个对象耗时比较长，使用资源比较多。<br>        在整个项目中，有一个就够用了。</p>
+<pre><code> SqlSessionFactory:接口  ， 接口实现类： DefaultSqlSessionFactory
+  SqlSessionFactory作用： 获取SqlSession对象。SqlSession sqlSession = factory.openSession();
+
+  openSession()方法说明：
+   1. openSession() ：无参数的， 获取是非自动提交事务的SqlSession对象
+    2. openSession(boolean): openSession(true)  获取自动提交事务的SqlSession. 
+                             openSession(false)  非自动提交事务的SqlSession对象</code></pre>
+<p> 4)SqlSession:<br>   SqlSession接口 ：定义了操作数据的方法 例如 selectOne() ,selectList() ,insert(),update(), delete(), commit(), rollback()<br>   SqlSession接口的实现类DefaultSqlSession。</p>
+<pre><code>使用要求： SqlSession对象不是线程安全的，需要在方法内部使用， 在执行sql语句之前，使用openSession()获取SqlSession对象。
+在执行完sql语句后，需要关闭它，执行SqlSession.close(). 这样能保证他的使用是线程安全的。</code></pre>
+<h2 id="第三章：MyBatis-框架-Dao-代理"><a href="#第三章：MyBatis-框架-Dao-代理" class="headerlink" title="第三章：MyBatis 框架 Dao 代理"></a>第三章：MyBatis 框架 Dao 代理</h2><h3 id="1-动态代理："><a href="#1-动态代理：" class="headerlink" title="1.动态代理："></a>1.动态代理：</h3><p> 使用SqlSession.getMapper(dao接口.class) 获取这个dao接口的对象</p>
+<h3 id="2-传入参数："><a href="#2-传入参数：" class="headerlink" title="2.传入参数："></a>2.传入参数：</h3><p> 从java代码中把数据传入到mapper文件的sql语句中。<br>1）parameterType ： 写在mapper文件中的 一个属性。 表示dao接口中方法的参数的数据类型。<br>     例如StudentDao接口<br>      public Student  selectStudentById(Integer id) </p>
+<ol start="2">
+<li><p>一个简单类型的参数：<br>简单类型： mybatis把java的基本数据类型和String都叫简单类型。<br>在mapper文件获取简单类型的一个参数的值，使用 #{任意字符}</p>
+<p>接口：public Student  selectStudentById(Integer id)<br>mapper:select id,name, email,age from student where id=#{studentId}</p>
+<ol start="3">
+<li><p>多个参数，使用@Param命名参数<br>接口 public List<Student> selectMulitParam(@Param(“myname”) String name, @Param(“myage”) Integer age)<br>使用  @Param(“参数名”)  String name<br>mapper文件：</p>
+ <select>
+     select * from student where name=#{myname} or age=#{myage}
+  </select>
+</li>
+<li><p>多个参数，使用java对象<br>语法 #{属性名}</p>
+</li>
+</ol>
+<p>vo: value object , 放一些存储数据的类。比如说 提交请求参数， name ,age </p>
+<pre><code>现在想把name ,age 传给一个service 类。</code></pre>
+<p>vo: view object , 从servlet把数据返回给浏览器使用的类，表示显示结果的类。</p>
+<p>pojo: 普通的有set， get方法的java类。 普通的java对象</p>
+<pre><code> Servlet --- StudentService( addStudent( MyParam  param)  )</code></pre>
+<p>entity（domain域）: 实体类， 和数据库中的表对应的类， </p>
+</li>
+</ol>
+<pre><code>5) # 和  $
+
+  select id,name, email,age from student where id=#&#123;studentId&#125;
+  # 的结果： select id,name, email,age from student where id=? </code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> select id,name, email,age from student where id&#x3D;$&#123;studentId&#125;</span><br><span class="line">$ 的结果：select id,name, email,age from student where id&#x3D;1001</span><br><span class="line"></span><br><span class="line">String sql&#x3D;&quot;select id,name, email,age from student where id&#x3D;&quot; + &quot;1001&quot;;</span><br><span class="line">使用的Statement对象执行sql， 效率比PreparedStatement低。</span><br></pre></td></tr></table></figure>
+
+
+<pre><code>  $:可以替换表名或者列名， 你能确定数据是安全的。可以使用$
+
+
+  # 和 $区别
+  1. #使用 ？在sql语句中做站位的， 使用PreparedStatement执行sql，效率高
+  2. #能够避免sql注入，更安全。
+  3. $不使用占位符，是字符串连接方式，使用Statement对象执行sql，效率低
+  4. $有sql注入的风险，缺乏安全性。
+  5. $:可以替换表名或者列名</code></pre>
+<h3 id="3-mybatis的输出结果"><a href="#3-mybatis的输出结果" class="headerlink" title="3.mybatis的输出结果"></a>3.mybatis的输出结果</h3><p>mybatis执行了sql语句，得到java对象。</p>
+<p> 1）resultType结果类型， 指sql语句执行完毕后， 数据转为的java对象， java类型是任意的。<br>   resultType结果类型的它值 1. 类型的全限定名称   2. 类型的别名， 例如 java.lang.Integer别名是int</p>
+<pre><code>    处理方式：
+       1. mybatis执行sql语句， 然后mybatis调用类的无参数构造方法，创建对象。
+        2. mybatis把ResultSet指定列值付给同名的属性。</code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">select</span> <span class="attr">id</span>=<span class="string">&quot;selectMultiPosition&quot;</span> <span class="attr">resultType</span>=<span class="string">&quot;com.bjpowernode.domain.Student&quot;</span>&gt;</span></span><br><span class="line">    select id,name, email,age from student</span><br><span class="line">  <span class="tag">&lt;/<span class="name">select</span>&gt;</span></span><br><span class="line"></span><br><span class="line"> 对等的jdbc</span><br><span class="line"> ResultSet rs = executeQuery(&quot; select id,name, email,age from student&quot; )</span><br><span class="line"> while(rs.next())&#123;</span><br><span class="line">         Student  student = new Student();</span><br><span class="line">		student.setId(rs.getInt(&quot;id&quot;));</span><br><span class="line">		student.setName(rs.getString(&quot;name&quot;))</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>定义自定义类型的别名<br> 1）在mybatis主配置文件中定义，使<typeAlias>定义别名<br>  2）可以在resultType中使用自定义别名</p>
+<p>3）resultMap:结果映射， 指定列名和java对象的属性对应关系。<br>  1）你自定义列值赋值给哪个属性<br>   2）当你的列名和属性名不一样时，一定使用resultMap</p>
+</li>
+</ol>
+<pre><code>     resultMap和resultType不要一起用，二选一</code></pre>
+<h2 id="第四章动态sql"><a href="#第四章动态sql" class="headerlink" title="第四章动态sql"></a>第四章动态sql</h2><p> 动态sql: sql的内容是变化的，可以根据条件获取到不同的sql语句。<br>           主要是where部分发生变化。</p>
+<p> 动态sql的实现，使用的是mybatis提供的标签， <if> ,<where>,<foreach></p>
+<p> 1)<if>是判断条件的，<br>   语法<if test="判断java对象的属性值"><br>            部分sql语句<br>        </if></p>
+<p> 2)<where> 用来包含 多个<if>的， 当多个if有一个成立的， <where>会自动增加一个where关键字，<br>            并去掉 if中多余的 and ，or等。</p>
+<p> 3）<foreach> 循环java中的数组，list集合的。 主要用在sql的in语句中。<br>    学生id是 1001,1002,1003的三个学生</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">select * from student where id in (1001,1002,1003)</span><br><span class="line"></span><br><span class="line">public List<span class="tag">&lt;<span class="name">Student</span>&gt;</span> selectFor(List<span class="tag">&lt;<span class="name">Integer</span>&gt;</span> idlist)</span><br><span class="line"></span><br><span class="line">List<span class="tag">&lt;<span class="name">Integer</span>&gt;</span> list = new ...</span><br><span class="line">list.add(1001);</span><br><span class="line">list.add(1002);</span><br><span class="line">list.add(1003);</span><br><span class="line"></span><br><span class="line">dao.selectFor(list)</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"> <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">&quot;&quot;</span> <span class="attr">item</span>=<span class="string">&quot;&quot;</span> <span class="attr">open</span>=<span class="string">&quot;&quot;</span> <span class="attr">close</span>=<span class="string">&quot;&quot;</span> <span class="attr">separator</span>=<span class="string">&quot;&quot;</span>&gt;</span></span><br><span class="line">         #&#123;xxx&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"></span><br><span class="line">collection:表示接口中的方法参数的类型， 如果是数组使用array , 如果是list集合使用list</span><br><span class="line"> item:自定义的，表示数组和集合成员的变量</span><br><span class="line"> open:循环开始是的字符</span><br><span class="line"> close:循环结束时的字符</span><br><span class="line">separator:集合成员之间的分隔符</span><br></pre></td></tr></table></figure>
+
+
+<p>  4）sql代码片段， 就是复用一些语法<br>    步骤<br>     1.先定义 <sql id="自定义名称唯一">  sql语句， 表名，字段等 </sql><br>    2.再使用， <include refid="id的值" /></p>
+<h2 id="第五章：MyBatis-配置文件"><a href="#第五章：MyBatis-配置文件" class="headerlink" title="第五章：MyBatis 配置文件"></a>第五章：MyBatis 配置文件</h2><ol>
+<li><h3 id="数据库的属性配置文件："><a href="#数据库的属性配置文件：" class="headerlink" title="数据库的属性配置文件："></a>数据库的属性配置文件：</h3></li>
+</ol>
+<p>​     把数据库连接信息放到一个单独的文件中。 和mybatis主配置文件分开。<br>​    目的是便于修改，保存，处理多个数据库的信息。<br>​<br>      1）在resources目录中定义一个属性配置文件， xxxx.properties ,例如 jdbc.properties<br>       在属性配置文件中， 定义数据，格式是 key=value<br>          key： 一般使用 . 做多级目录的。<br>          例如 jdbc.mysql.driver    , jdbc.driver, mydriver<br>          jdbc.driver=com.mysql.jdbc.Driver<br>          jdbc.url=jdbc:mysql//…..<br>          jdbc.username=root<br>          jdbc.password=123456</p>
+<pre><code>  2）在mybatis的主配置文件使用&lt;property&gt; 指定文件的位置
+     在需要使用值的地方， $&#123;key&#125;</code></pre>
+<h3 id="2-mapper文件，使用package指定路径"><a href="#2-mapper文件，使用package指定路径" class="headerlink" title="2.mapper文件，使用package指定路径"></a>2.mapper文件，使用package指定路径</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mappers</span>&gt;</span>    </span><br><span class="line">    <span class="comment">&lt;!--第二种方式： 使用包名</span></span><br><span class="line"><span class="comment">        name: xml文件（mapper文件）所在的包名, 这个包中所有xml文件一次都能加载给mybatis</span></span><br><span class="line"><span class="comment">        使用package的要求：</span></span><br><span class="line"><span class="comment">         1. mapper文件名称需要和接口名称一样， 区分大小写的一样</span></span><br><span class="line"><span class="comment">         2. mapper文件和dao接口需要在同一目录</span></span><br><span class="line"><span class="comment">    --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">package</span> <span class="attr">name</span>=<span class="string">&quot;com.bjpowernode.dao&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mappers</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="第六章：PageHelper"><a href="#第六章：PageHelper" class="headerlink" title="第六章：PageHelper"></a>第六章：PageHelper</h2><p> 6.1.1 Mybatis 通用分页插件</p>
+<pre><code> https://github.com/pagehelper/Mybatis-PageHelper </code></pre>
+<p>​        PageHelper 支持多种数据库：</p>
+<ol>
+<li><p>Oracle</p>
+</li>
+<li><p>Mysql</p>
+</li>
+<li><p>MariaDB </p>
+</li>
+<li><p>SQLite </p>
+</li>
+<li><p>Hsqldb </p>
+</li>
+<li><p>PostgreSQL </p>
+</li>
+<li><p>DB2 </p>
+</li>
+<li><p>SqlServer(2005,2008) </p>
+</li>
+<li><p>Informix </p>
+</li>
+<li><p>H2 </p>
+</li>
+<li><p>SqlServer2012 </p>
+</li>
+<li><p>Derby </p>
+</li>
+<li><p>Phoenix </p>
+<p>6.1.2 基于 PageHelper 分页： 实现步骤：</p>
+<p>（1） maven 坐标  com.github.pagehelper pagehelper</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.github.pagehelper<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>pagehelper<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"> <span class="tag">&lt;<span class="name">version</span>&gt;</span>5.1.10<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ol>
+<pre><code>（2） 加入 plugin 配置 在之前加入   
+
+（3） PageHelper 对象 查询语句之前调用 PageHelper.startPage 静态方法。 除了 PageHelper.startPage 方法外，还提供了类似用法的 PageHelper.offsetPage 方法。 在你需要进行分页的 MyBatis 查询方法前调用 PageHelper.startPage 静态方法即可，紧跟在这个 方法后的第一个 MyBatis 查询方法会被进行分页。
+
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSelect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"><span class="comment">//获取第 1 页，3 条内容</span></span><br><span class="line">PageHelper.startPage(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line"> List&lt;Student&gt; studentList = studentDao.selectStudents();</span><br><span class="line"> studentList.forEach( stu -&gt; System.out.println(stu));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/11/16/JQuery%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="JQuery学习笔记">
+      <i class="fa fa-chevron-left"></i> JQuery学习笔记
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/07/08/Spring%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="Spring学习笔记">
+      Spring学习笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#mybatis"><span class="nav-number">1.</span> <span class="nav-text">mybatis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0%E6%A1%86%E6%9E%B6%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">第一章框架概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%89%E5%B1%82%E6%9E%B6%E6%9E%84"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.三层架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%A1%86%E6%9E%B6"><span class="nav-number">1.1.2.</span> <span class="nav-text">2.框架</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0%EF%BC%9Amybatis%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8"><span class="nav-number">1.2.</span> <span class="nav-text">第二章：mybatis框架入门</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%BB%E8%A6%81%E7%B1%BB%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.2.1.</span> <span class="nav-text">1 主要类的介绍</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E7%AB%A0%EF%BC%9AMyBatis-%E6%A1%86%E6%9E%B6-Dao-%E4%BB%A3%E7%90%86"><span class="nav-number">1.3.</span> <span class="nav-text">第三章：MyBatis 框架 Dao 代理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86%EF%BC%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.动态代理：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%BC%A0%E5%85%A5%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.传入参数：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-mybatis%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.mybatis的输出结果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0%E5%8A%A8%E6%80%81sql"><span class="nav-number">1.4.</span> <span class="nav-text">第四章动态sql</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%94%E7%AB%A0%EF%BC%9AMyBatis-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.5.</span> <span class="nav-text">第五章：MyBatis 配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%B1%9E%E6%80%A7%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%9A"><span class="nav-number">1.5.1.</span> <span class="nav-text">数据库的属性配置文件：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-mapper%E6%96%87%E4%BB%B6%EF%BC%8C%E4%BD%BF%E7%94%A8package%E6%8C%87%E5%AE%9A%E8%B7%AF%E5%BE%84"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.mapper文件，使用package指定路径</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%85%AD%E7%AB%A0%EF%BC%9APageHelper"><span class="nav-number">1.6.</span> <span class="nav-text">第六章：PageHelper</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="LI Jinlong"
+      src="https://gitee.com/li-jin-long/blog/raw/master/img/20201018192746.jpg">
+  <p class="site-author-name" itemprop="name">LI Jinlong</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">LI Jinlong</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
