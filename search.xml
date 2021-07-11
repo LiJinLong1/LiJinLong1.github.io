@@ -1458,6 +1458,13 @@
 
  <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">testSelect</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line"><span class="comment">//获取第 1 页，3 条内容</span></span><br><span class="line">PageHelper.startPage(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line"> List&lt;Student&gt; studentList = studentDao.selectStudents();</span><br><span class="line"> studentList.forEach( stu -&gt; System.out.println(stu));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></code></pre>
 ]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>SSM</tag>
+        <tag>mybatis</tag>
+      </tags>
   </entry>
   <entry>
     <title>Spring学习笔记</title>
